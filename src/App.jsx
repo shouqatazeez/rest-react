@@ -16,20 +16,23 @@ const App = () => {
     </div>
   );
 
-  const Restcard = () => (
-    <div className=" m-2 border w-46  hover:border-2 rounded ">
-      <div className="">
-        <img
-          src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/7/28/68413230-9dc2-459a-91ac-c3950de16632_233050.JPG"
-          className="object-cover w-full h-full"
-        />
-        <h1>Mughal Hotel</h1>
-        <h2>Biryani,North Indian</h2>
-        <h3>4.8 Stars</h3>
-        <h3>15 minutes</h3>
+  const Restcard = (props) => {
+    const { resName, cusines } = props;
+    return (
+      <div className=" m-2 border w-46  hover:border-2 rounded ">
+        <div className="">
+          <img
+            src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/7/28/68413230-9dc2-459a-91ac-c3950de16632_233050.JPG"
+            className="object-cover w-full h-full"
+          />
+          <h1>{resName}</h1>
+          <h2>{cusines}</h2>
+          <h3>4.8 Stars</h3>
+          <h3>15 minutes</h3>
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   const Body = () => (
     <div className="m-3">
@@ -37,7 +40,10 @@ const App = () => {
         <h1>Search</h1>
       </div>
       <div className="flex flex-wrap">
-        <Restcard />
+        <Restcard
+          resName="Bismillah Biryanis"
+          cusines="North Indian ,Homemade"
+        />
         <Restcard />
         <Restcard />
         <Restcard />
