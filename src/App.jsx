@@ -17,21 +17,52 @@ const App = () => {
   );
 
   const Restcard = (props) => {
-    const { resName, cusines } = props;
+    const { resData } = props;
     return (
       <div className=" m-2 border w-46  hover:border-2 rounded ">
         <div className="">
           <img
-            src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/7/28/68413230-9dc2-459a-91ac-c3950de16632_233050.JPG"
-            className="object-cover w-full h-full"
+            src={
+              "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
+              resData.info.cloudinaryImageId
+            }
           />
-          <h1>{resName}</h1>
-          <h2>{cusines}</h2>
-          <h3>4.8 Stars</h3>
-          <h3>15 minutes</h3>
+
+          <h1>{resData.info.name}</h1>
+          <h2>{resData.info.cuisines.join(", ")}</h2>
+          <h3>{resData.info.avgRating} stars</h3>
+          <h3>{resData.info.costForTwo}</h3>
+          <h3>{resData.info.sla.deliveryTime} minutes</h3>
         </div>
       </div>
     );
+  };
+
+  const resObj = {
+    restaurant: {
+      info: {
+        id: "547809",
+        name: "Theobroma",
+        cloudinaryImageId:
+          "RX_THUMBNAIL/IMAGES/VENDOR/2025/6/23/bbe012dc-8ba0-496c-815d-ed62c3928935_547809.JPG",
+        locality: "Himayath Nagar",
+        areaName: "Himayath Nagar",
+        costForTwo: "₹400 for two",
+        cuisines: ["Desserts", "Bakery"],
+        avgRating: 4.6,
+        avgRatingString: "4.6",
+        totalRatingsString: "4.2K+",
+        sla: {
+          deliveryTime: 14,
+          slaString: "10-15 mins",
+          lastMileTravel: 0.9,
+        },
+      },
+      cta: {
+        link: "https://www.swiggy.com/city/hyderabad/theobroma-himayath-nagar-rest547809",
+        type: "WEBLINK",
+      },
+    },
   };
 
   const Body = () => (
@@ -40,43 +71,7 @@ const App = () => {
         <h1>Search</h1>
       </div>
       <div className="flex flex-wrap">
-        <Restcard
-          resName="Bismillah Biryanis"
-          cusines="North Indian ,Homemade"
-        />
-        <Restcard />
-        <Restcard />
-        <Restcard />
-        <Restcard />
-        <Restcard />
-        <Restcard />
-        <Restcard />
-        <Restcard />
-        <Restcard />
-        <Restcard />
-        <Restcard />
-        <Restcard />
-        <Restcard />
-        <Restcard />
-        <Restcard />
-        <Restcard />
-        <Restcard />
-        <Restcard />
-        <Restcard />
-        <Restcard />
-        <Restcard />
-        <Restcard />
-        <Restcard />
-        <Restcard />
-        <Restcard />
-        <Restcard />
-        <Restcard />
-        <Restcard />
-        <Restcard />
-        <Restcard />
-        <Restcard />
-        <Restcard />
-        <Restcard />
+        <Restcard resData={resObj.restaurant} />
       </div>
     </div>
   );
