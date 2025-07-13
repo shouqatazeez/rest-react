@@ -1764,8 +1764,8 @@ const App = () => {
         <h1>Search</h1>
       </div>
       <div className="flex flex-wrap">
-        {resObj.map((restaurant) => (
-          <Restcard resData={restaurant} />
+        {resObj.map((restaurant, id) => (
+          <Restcard key={id} resData={restaurant} />
         ))}
       </div>
     </div>
