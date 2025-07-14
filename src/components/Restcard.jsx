@@ -4,7 +4,7 @@ const Restcard = (props) => {
   const { cloudinaryImageId, name, cuisines, avgRating, costForTwo } =
     resData.info;
   return (
-    <div className=" m-2 border w-46  hover:border-2 rounded ">
+    <div className=" m-2 border w-46  hover:border-2 rounded bg-gray-200">
       <div className="">
         <img src={Cdn_Url + cloudinaryImageId} />
 
