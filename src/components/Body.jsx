@@ -1,5 +1,4 @@
 import Restcard from "./Restcard";
-// import resObj from "../utils/mockData";
 import { useEffect, useState } from "react";
 
 const Body = () => {
