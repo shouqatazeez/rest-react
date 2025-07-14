@@ -1,3 +1,4 @@
+import { Cdn_Url } from "../utils/constants";
 const Restcard = (props) => {
   const { resData } = props;
   const { cloudinaryImageId, name, cuisines, avgRating, costForTwo } =
@@ -5,12 +6,7 @@ const Restcard = (props) => {
   return (
     <div className=" m-2 border w-46  hover:border-2 rounded ">
       <div className="">
-        <img
-          src={
-            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
-            cloudinaryImageId
-          }
-        />
+        <img src={Cdn_Url + cloudinaryImageId} />
 
         <h1>{name}</h1>
         <h2>{cuisines.join(", ")}</h2>

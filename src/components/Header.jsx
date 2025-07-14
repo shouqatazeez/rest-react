@@ -1,10 +1,8 @@
+import { Logo_Url } from "../utils/constants";
 const Header = () => {
   return (
     <div className="border h-24 flex">
-      <img
-        src="https://static.vecteezy.com/system/resources/previews/035/526/567/original/restaurant-logo-free-vector.jpg"
-        className="h-22 "
-      />
+      <img src={Logo_Url} className="h-22 " />
       <div className="space-x-5 m-9 ml-auto ">
         <a href="/">Home</a>
         <a href="/">About Us</a>
