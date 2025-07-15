@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { Logo_Url } from "../utils/constants";
 const Header = () => {
+  const [btnName, setbtnName] = useState("Login");
   return (
     <div className="border h-24 flex">
       <img src={Logo_Url} className="h-22 " />
@@ -8,6 +10,14 @@ const Header = () => {
         <a href="/">About Us</a>
         <a href="/">Contact Us</a>
         <a href="/">Cart</a>
+        <button
+          className="border rounded p-1 cursor-pointer hover:bg-amber-200 "
+          onClick={() => {
+            btnName == "Login" ? setbtnName("Logout") : setbtnName("Login");
+          }}
+        >
+          {btnName}
+        </button>
       </div>
     </div>
   );

@@ -36,7 +36,7 @@ const Body = () => {
   }
 
   return (
-    <div className="m-3 ">
+    <div className="m-3 ml-12 ">
       <div>
         <button
           className="border rounded cursor-pointer p-1.5 ml-2 bg-gray-200 hover:bg-gray-300"
@@ -51,7 +51,7 @@ const Body = () => {
         </button>
       </div>
 
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap ">
         {reslist.map((restaurant, id) => (
           <Restcard key={id} resData={restaurant} />
         ))}
