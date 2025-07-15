@@ -1,5 +1,6 @@
 import Restcard from "./Restcard";
 import { useEffect, useState } from "react";
+import ShimmerGallery from "./ShimmerGallery";
 
 const Body = () => {
   const [reslist, setresList] = useState([]);
@@ -29,6 +30,10 @@ const Body = () => {
     //   json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
     // );
   };
+
+  if (reslist.length == 0) {
+    return <ShimmerGallery />;
+  }
 
   return (
     <div className="m-3 ">
