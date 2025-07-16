@@ -11,7 +11,7 @@ const Header = () => {
         <a href="/">Contact Us</a>
         <a href="/">Cart</a>
         <button
-          className="border rounded p-1 cursor-pointer hover:bg-amber-200 "
+          className="border rounded p-1 cursor-pointer hover:bg-gray-300 "
           onClick={() => {
             btnName == "Login" ? setbtnName("Logout") : setbtnName("Login");
           }}
