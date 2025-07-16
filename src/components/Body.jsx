@@ -63,6 +63,16 @@ const Body = () => {
           >
             Search
           </button>
+
+          <button
+            className="border rounded cursor-pointer p-1 ml-1 bg-yellow-200 hover:bg-yellow-300"
+            onClick={() => {
+              setresList(allRestaurants);
+              setsearchText("");
+            }}
+          >
+            Reset
+          </button>
         </div>
 
         <button
