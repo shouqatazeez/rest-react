@@ -79,7 +79,7 @@ const Body = () => {
           className="border rounded cursor-pointer p-1.5 ml-3 bg-gray-200 hover:bg-gray-300"
           onClick={() => {
             const filterdata = allRestaurants.filter(
-              (res) => res.info.avgRating > 4.3
+              (res) => res.info.avgRating > 4.5
             );
             setresList(filterdata);
           }}
