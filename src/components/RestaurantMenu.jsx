@@ -1,7 +1,11 @@
 import React from "react";
 
 const RestaurantMenu = () => {
-  return <div></div>;
+  return (
+    <div>
+      <h1>Hello</h1>
+    </div>
+  );
 };
 
 export default RestaurantMenu;
