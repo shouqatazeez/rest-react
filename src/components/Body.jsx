@@ -35,11 +35,13 @@ const Body = () => {
     // );
   };
 
-  if (reslist.length == 0) {
-    return <ShimmerGallery />;
-  }
+  // if (reslist.length == 0) {
+  //   return <ShimmerGallery />;
+  // }
 
-  return (
+  return reslist.length == 0 ? (
+    <ShimmerGallery />
+  ) : (
     <div className="m-3 ml-12  ">
       <div className="flex ">
         <div>
