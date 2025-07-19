@@ -1,6 +1,7 @@
 import Restcard from "./Restcard";
 import { useEffect, useState } from "react";
 import ShimmerGallery from "./ShimmerGallery";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [reslist, setresList] = useState([]);
@@ -88,7 +89,10 @@ const Body = () => {
 
       <div className="flex flex-wrap ">
         {reslist.map((restaurant, id) => (
-          <Restcard key={id} resData={restaurant} />
+          <Link to={"/restaurantmenu/" + restaurant.info.id}>
+            {" "}
+            <Restcard key={id} resData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>
