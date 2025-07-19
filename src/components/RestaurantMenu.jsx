@@ -5,13 +5,14 @@ import { Menu_Url } from "../utils/constants";
 
 const RestaurantMenu = () => {
   const [resInfo, setresInfo] = useState(null);
+
   useEffect(() => {
     fetchMenuInfo();
   }, []);
 
   const fetchMenuInfo = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=17.38430&lng=78.45830&restaurantId=378344&catalog_qa=undefined&submitAction=ENTER"
+      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=17.38430&lng=78.45830&restaurantId=173999&catalog_qa=undefined&submitAction=ENTER"
     );
     const json = await data.json();
     console.log(json);
@@ -32,9 +33,32 @@ const RestaurantMenu = () => {
 
   const { slaString } = resInfo?.cards[2]?.card?.card?.info?.sla || {};
 
-  const { itemCards } =
-    resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card
-      ?.categories[0] || {};
+  const regularCards = resInfo?.cards?.find((card) => card.groupedCard)
+    ?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+
+  let itemCards = [];
+
+  if (regularCards) {
+    for (let section of regularCards) {
+      const cardData = section?.card?.card;
+
+      if (cardData?.itemCards?.length) {
+        itemCards = cardData.itemCards;
+        break;
+      }
+
+      if (Array.isArray(cardData?.categories)) {
+        const found = cardData.categories.find((cat) =>
+          Array.isArray(cat.itemCards)
+        );
+        if (found) {
+          itemCards = found.itemCards;
+          break;
+        }
+      }
+    }
+  }
+
   console.log(itemCards);
 
   return (
@@ -66,14 +90,12 @@ const RestaurantMenu = () => {
               key={item.card.info.id}
               className="flex items-center bg-white max-w-md w-full rounded-xl shadow-md p-4"
             >
-              {/* Food Image */}
               <img
                 src={Menu_Url + item.card.info.imageId}
                 alt={item.card.info.name}
                 className="w-24 h-24 object-cover rounded-xl mr-4"
               />
 
-              {/* Details */}
               <div className="flex-1">
                 <div className="flex justify-between items-center mb-1">
                   <div className="text-lg font-bold text-gray-950">
