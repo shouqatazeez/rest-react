@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Menushimmer from "./Menushimmer";
-import { Star, MapPin } from "lucide-react";
+import { Star, MapPin, IndianRupeeIcon } from "lucide-react";
+import { Menu_Url } from "../utils/constants";
 
 const RestaurantMenu = () => {
   const [resInfo, setresInfo] = useState(null);
@@ -17,6 +18,9 @@ const RestaurantMenu = () => {
 
     setresInfo(json.data);
   };
+  if (resInfo == null) {
+    return <Menushimmer />;
+  }
   const {
     name,
     avgRating,
@@ -28,9 +32,11 @@ const RestaurantMenu = () => {
 
   const { slaString } = resInfo?.cards[2]?.card?.card?.info?.sla || {};
 
-  if (resInfo == null) {
-    return <Menushimmer />;
-  }
+  const { itemCards } =
+    resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card
+      ?.categories[0] || {};
+  console.log(itemCards);
+
   return (
     <div className="text-center m-2 ">
       <h1 className="font-bold text-xl mb-3 text-gray-800">{name}</h1>
@@ -50,6 +56,44 @@ const RestaurantMenu = () => {
         <div className="flex justify-center gap-1 text-gray-700 text-sm">
           Delivery in<span className="font-semibold">{slaString}</span>
         </div>
+      </div>
+
+      <div className="m-8">
+        <h2 className="font-bold mb-6 text-center text-2xl">Menu</h2>
+        <ul className="space-y-4 flex flex-col items-center">
+          {itemCards.map((item) => (
+            <li
+              key={item.card.info.id}
+              className="flex items-center bg-white max-w-md w-full rounded-xl shadow-md p-4"
+            >
+              {/* Food Image */}
+              <img
+                src={Menu_Url + item.card.info.imageId}
+                alt={item.card.info.name}
+                className="w-24 h-24 object-cover rounded-xl mr-4"
+              />
+
+              {/* Details */}
+              <div className="flex-1">
+                <div className="flex justify-between items-center mb-1">
+                  <div className="text-lg font-bold text-gray-950">
+                    {item.card.info.name}
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <IndianRupeeIcon size={16} className="text-gray-600" />
+                    <span className="text-base text-gray-800 font-semibold">
+                      {(item.card.info.price || item.card.info.defaultPrice) /
+                        100}
+                    </span>
+                  </div>
+                </div>
+                <div className="text-sm text-gray-600">
+                  {item.card.info.description}
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
