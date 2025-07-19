@@ -35,10 +35,6 @@ const Body = () => {
     // );
   };
 
-  // if (reslist.length == 0) {
-  //   return <ShimmerGallery />;
-  // }
-
   return reslist.length == 0 ? (
     <ShimmerGallery />
   ) : (
