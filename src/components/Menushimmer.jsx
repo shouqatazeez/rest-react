@@ -1,8 +1,10 @@
 import React from "react";
-import { ShimmerTable } from "react-shimmer-effects";
+import { ShimmerCategoryList } from "react-shimmer-effects";
 
 const Menushimmer = () => {
-  return <ShimmerTable row={8} col={4} />;
+  {
+    return <ShimmerCategoryList title items={6} categoryStyle="STYLE_SEVEN" />;
+  }
 };
 
 export default Menushimmer;
