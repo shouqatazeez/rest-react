@@ -89,7 +89,10 @@ const Body = () => {
 
       <div className="flex flex-wrap ">
         {reslist.map((restaurant, id) => (
-          <Link to={"/restaurantmenu/" + restaurant.info.id}>
+          <Link
+            key={restaurant.info.id}
+            to={"/restaurantmenu/" + restaurant.info.id}
+          >
             {" "}
             <Restcard key={id} resData={restaurant} />
           </Link>
