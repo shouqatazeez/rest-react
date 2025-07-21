@@ -30,10 +30,6 @@ const Body = () => {
       [];
     setresList(restaurant);
     setAllRestaurants(restaurant);
-
-    // setresList(
-    //   json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
-    // );
   };
 
   return reslist.length == 0 ? (
