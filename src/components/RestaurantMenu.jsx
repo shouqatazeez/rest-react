@@ -1,28 +1,15 @@
-import React, { useEffect, useState } from "react";
 import Menushimmer from "./Menushimmer";
 import { Star, MapPin, IndianRupeeIcon } from "lucide-react";
 import { Menu_Url } from "../utils/constants";
 import { useParams } from "react-router-dom";
 
-const RestaurantMenu = () => {
-  const [resInfo, setresInfo] = useState(null);
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 
+const RestaurantMenu = () => {
   const { resId } = useParams();
+  const resInfo = useRestaurantMenu(resId);
   console.log(resId);
 
-  useEffect(() => {
-    fetchMenuInfo();
-  }, []);
-
-  const fetchMenuInfo = async () => {
-    const url = `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=17.38430&lng=78.45830&restaurantId=${resId}&catalog_qa=undefined&submitAction=ENTER`;
-
-    const data = await fetch(url);
-
-    const json = await data.json();
-
-    setresInfo(json.data);
-  };
   if (resInfo == null) {
     return <Menushimmer />;
   }
