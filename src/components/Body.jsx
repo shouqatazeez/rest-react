@@ -2,6 +2,7 @@ import Restcard from "./Restcard";
 import { useEffect, useState } from "react";
 import ShimmerGallery from "./ShimmerGallery";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [reslist, setresList] = useState([]);
@@ -31,6 +32,14 @@ const Body = () => {
     setresList(restaurant);
     setAllRestaurants(restaurant);
   };
+
+  const onlineStatus = useOnlineStatus();
+
+  if (onlineStatus == false) {
+    return (
+      <h1>Looks like you're offline!! please check your internet connection</h1>
+    );
+  }
 
   return reslist.length == 0 ? (
     <ShimmerGallery />
