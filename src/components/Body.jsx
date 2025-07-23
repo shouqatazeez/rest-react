@@ -35,9 +35,15 @@ const Body = () => {
 
   const onlineStatus = useOnlineStatus();
 
-  if (onlineStatus == false) {
+  if (onlineStatus === false) {
     return (
-      <p>Looks like you're offline!! please check your internet connection</p>
+      <div className="flex justify-center items-center h-screen bg-gray-100">
+        <p className="bg-red-100 text-red-700 px-6 py-3 rounded-md shadow-md text-lg font-semibold text-center max-w-xs">
+          You’re currently offline.
+          <br />
+          Please check your internet connection and try again.
+        </p>
+      </div>
     );
   }
 
