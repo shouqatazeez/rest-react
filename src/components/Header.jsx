@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { Logo_Url } from "../utils/constants";
 import { Link } from "react-router-dom";
-import About from "./About";
+import useOnlineStatus from "../utils/useOnlineStatus";
 const Header = () => {
+  const onlineStatus = useOnlineStatus();
   const [btnName, setbtnName] = useState("Login");
   return (
-    <div className="border h-24 flex">
-      <img src={Logo_Url} className="h-22 rounded-full" />
-      <div className="space-x-5 m-9 ml-auto ">
+    <div className="border h-24 flex items-center">
+      <img src={Logo_Url} className="h-23 max-w-2/12 rounded-full " />
+      <div className="space-x-6 px-4 m-9 ml-auto ">
+        <span>Online Status:{onlineStatus ? "✅" : "🛑"} </span>
         <Link to="/">Home</Link>
         <Link to="/about">About Us</Link>
         <Link to="/contact">Contact Us</Link>
