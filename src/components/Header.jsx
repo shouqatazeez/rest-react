@@ -14,10 +14,9 @@ const Header = () => {
       <div className="flex items-center justify-between px-4 py-3 md:py-4">
         <div className="flex items-center">
           <img src={Logo_Url} className="h-14 w-14 rounded-full" alt="logo" />
-          <span className="text-xl font-bold ml-3">ReactBite</span>
+          <span className="text-xl font-bold ml-3">TastyBites</span>
         </div>
 
-        {/* Hamburger Icon for Mobile */}
         <button
           className="md:hidden p-2 rounded-full hover:bg-gray-100 cursor-pointer"
           onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
