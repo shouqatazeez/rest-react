@@ -19,7 +19,6 @@ const Body = () => {
     );
 
     const json = await data.json();
-    console.log(json);
 
     const restaurantCard = json.data.cards.find(
       (card) =>
@@ -29,6 +28,7 @@ const Body = () => {
     const restaurant =
       restaurantCard?.card?.card?.gridElements?.infoWithStyle?.restaurants ||
       [];
+
     setresList(restaurant);
     setAllRestaurants(restaurant);
   };
@@ -41,73 +41,73 @@ const Body = () => {
           <p>
             You’re currently offline.
             <br />
-            Please check your internet connection, connect, and refresh the page
-            to continue.
+            Please check your internet connection and refresh.
           </p>
         </div>
       </div>
     );
   }
 
-  return reslist.length == 0 ? (
+  const handleSearch = () => {
+    const filtered = allRestaurants.filter((res) =>
+      res.info.name.toLowerCase().includes(searchtext.toLowerCase())
+    );
+    setresList(filtered);
+  };
+
+  const handleReset = () => {
+    setresList(allRestaurants);
+    setsearchText("");
+  };
+
+  const handleTopRated = () => {
+    const topRated = allRestaurants.filter((res) => res.info.avgRating > 4.5);
+    setresList(topRated);
+  };
+
+  return reslist.length === 0 ? (
     <ShimmerGallery />
   ) : (
-    <div className="m-3 ml-12  ">
-      <div className="flex ">
-        <div>
+    <div className="p-4 max-w-screen-xl mx-auto">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
+        <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto ml-4">
           <input
-            type="text "
-            placeholder="Enter restaurant name"
-            className="border  p-1 ml-2 rounded "
+            type="text"
+            placeholder="Search restaurants..."
+            className="px-3 py-2 border rounded-md w-full sm:w-64 focus:outline-none focus:ring focus:border-blue-300"
             value={searchtext}
-            onChange={(e) => {
-              setsearchText(e.target.value);
-            }}
+            onChange={(e) => setsearchText(e.target.value)}
           />
           <button
-            className="border rounded ml-1 p-1 cursor-pointer hover:bg-gray-300 bg-green-200 "
-            onClick={() => {
-              const filterResdata = allRestaurants.filter((res) =>
-                res.info.name.toLowerCase().includes(searchtext.toLowerCase())
-              );
-              setresList(filterResdata);
-            }}
+            onClick={handleSearch}
+            className="px-3 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition"
           >
             Search
           </button>
-
           <button
-            className="border rounded cursor-pointer p-1 ml-1 bg-yellow-200 hover:bg-yellow-300"
-            onClick={() => {
-              setresList(allRestaurants);
-              setsearchText("");
-            }}
+            onClick={handleReset}
+            className="px-3 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition"
           >
             Reset
           </button>
         </div>
-
         <button
-          className="border rounded cursor-pointer p-1.5 ml-3 bg-gray-200 hover:bg-gray-300"
-          onClick={() => {
-            const filterdata = allRestaurants.filter(
-              (res) => res.info.avgRating > 4.5
-            );
-            setresList(filterdata);
-          }}
+          onClick={handleTopRated}
+          className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition"
         >
           Top Rated Restaurants
         </button>
       </div>
 
-      <div className="flex flex-wrap ">
-        {reslist.map((restaurant, id) => (
+      {/* Restaurant Cards Grid */}
+
+      <div className="grid gap-2 grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
+        {reslist.map((restaurant) => (
           <Link
             key={restaurant.info.id}
-            to={"/restaurantmenu/" + restaurant.info.id}
+            to={`/restaurantmenu/${restaurant.info.id}`}
           >
-            {" "}
-            <Restcard key={id} resData={restaurant} />
+            <Restcard resData={restaurant} />
           </Link>
         ))}
       </div>
