@@ -1,6 +1,8 @@
 import Menushimmer from "./Menushimmer";
 import { Star, MapPin, IndianRupeeIcon } from "lucide-react";
+
 import { Menu_Url } from "../utils/constants";
+
 import { useParams } from "react-router-dom";
 
 import useRestaurantMenu from "../utils/useRestaurantMenu";
@@ -58,11 +60,13 @@ const RestaurantMenu = () => {
       <div className="max-w-md mx-auto my-1 p-1 bg-white rounded-lg shadow-lg">
         <div className="flex justify-center items-center text-sm gap-1">
           <Star size={16} className="fill-yellow-400 text-yellow-500" />
-          <span className="font-bold text-yellow-600">{avgRating}</span>
+          yellow-400
+          <span className="font-bold ">{avgRating}</span>
           <span className="text-shadow-black-400">
             ({totalRatingsString}) - {costForTwoMessage}
           </span>
         </div>
+
         <h2 className="m-2 text-orange-700">{cuisines.join(", ")}</h2>
         <div className="flex justify-center items-center gap-1 text-sm text-emerald-600">
           <MapPin size={16} className="text-emerald-600" />
