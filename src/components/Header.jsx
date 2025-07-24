@@ -10,7 +10,7 @@ const Header = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="border-b shadow-md bg-white z-50">
+    <header className=" shadow-md bg-white z-50">
       <div className="flex items-center justify-between px-4 py-3 md:py-4">
         <div className="flex items-center">
           <img src={Logo_Url} className="h-14 w-14 rounded-full" alt="logo" />
