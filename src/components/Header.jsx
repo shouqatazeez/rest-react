@@ -13,8 +13,12 @@ const Header = () => {
     <header className=" shadow-md bg-white z-50">
       <div className="flex items-center justify-between px-4 py-3 md:py-4">
         <div className="flex items-center">
-          <img src={Logo_Url} className="h-14 w-14 rounded-full" alt="logo" />
-          <span className="text-xl font-bold ml-3">TastyBites</span>
+          <Link to={"/"}>
+            <img src={Logo_Url} className="h-14 w-14 rounded-full" alt="logo" />
+          </Link>
+          <Link to={"/"}>
+            <span className="text-xl font-bold ml-3">TastyBites</span>
+          </Link>
         </div>
 
         <button
