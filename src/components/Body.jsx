@@ -80,20 +80,20 @@ const Body = () => {
           />
           <button
             onClick={handleSearch}
-            className="px-3 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition"
+            className="px-3 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition cursor-pointer"
           >
             Search
           </button>
           <button
             onClick={handleReset}
-            className="px-3 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition"
+            className="px-3 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition cursor-pointer"
           >
             Reset
           </button>
         </div>
         <button
           onClick={handleTopRated}
-          className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition"
+          className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition cursor-pointer"
         >
           Top Rated Restaurants
         </button>
