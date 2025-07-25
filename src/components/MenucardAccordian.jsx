@@ -12,11 +12,11 @@ const MenuCategory = ({ title, items }) => {
   return (
     <div className="mb-6 max-w-md mx-auto">
       <div
-        className="flex justify-between items-center cursor-pointer p-3 bg-gray-100 rounded-md hover:bg-gray-200"
+        className="flex justify-between items-center cursor-pointer p-3 bg-gray-100 rounded-md hover:bg-gray-200 shadow-lg"
         onClick={toggleAccordion}
       >
-        <h3 className="text-lg font-semibold text-left text-gray-900">
-          {title}
+        <h3 class Name="text-lg font-semibold text-left text-gray-900">
+          {title} ({items.length})
         </h3>
         {isOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
       </div>
