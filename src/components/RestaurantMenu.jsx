@@ -1,13 +1,7 @@
 import Menushimmer from "./Menushimmer";
 import MenuCategory from "./MenucardAccordian";
 
-import {
-  Star,
-  MapPin,
-  IndianRupeeIcon,
-  ChevronDown,
-  ChevronUp,
-} from "lucide-react";
+import { Star, MapPin } from "lucide-react";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 
