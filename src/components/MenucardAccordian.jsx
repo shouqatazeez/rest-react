@@ -35,6 +35,7 @@ const MenuCategory = ({ title, items }) => {
                   className="w-24 h-24 object-cover rounded-xl mr-4"
                 />
               )}
+              <button>Add +</button>
 
               <div className="flex-1">
                 <div className="flex justify-between items-center mb-1">
