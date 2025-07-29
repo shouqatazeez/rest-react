@@ -1,14 +1,10 @@
-import { useState } from "react";
 import { ChevronDown, ChevronUp, IndianRupeeIcon } from "lucide-react";
 import { Menu_Url } from "../utils/constants";
 
-const MenuCategory = ({ title, items }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
+const MenuCategory = ({ title, items, isOpen, onToggle }) => {
   const toggleAccordion = () => {
-    setIsOpen((prev) => !prev);
+    onToggle();
   };
-
   return (
     <div className="mb-6 max-w-md mx-auto">
       <div
