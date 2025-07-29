@@ -1,5 +1,5 @@
 import Menushimmer from "./Menushimmer";
-import MenuCategory from "./MenucardAccordian";
+import MenucardAccordian from "./MenucardAccordian";
 import { useState } from "react";
 import { Star, MapPin } from "lucide-react";
 import { useParams } from "react-router-dom";
@@ -73,7 +73,7 @@ const RestaurantMenu = () => {
         <h2 className="font-bold mb-6 text-center text-2xl">Menu</h2>
 
         {categoriesWithItems.map((category, index) => (
-          <MenuCategory
+          <MenucardAccordian
             key={category.title}
             title={category.title}
             items={category.items}
