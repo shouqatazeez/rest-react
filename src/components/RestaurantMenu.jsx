@@ -1,12 +1,14 @@
 import Menushimmer from "./Menushimmer";
 import MenuCategory from "./MenucardAccordian";
-
+import { useState } from "react";
 import { Star, MapPin } from "lucide-react";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
+  const [openCategoryIndex, setOpenCategoryIndex] = useState(null);
+
   const resInfo = useRestaurantMenu(resId);
 
   if (resInfo == null) {
@@ -70,11 +72,15 @@ const RestaurantMenu = () => {
       <div className="m-8">
         <h2 className="font-bold mb-6 text-center text-2xl">Menu</h2>
 
-        {categoriesWithItems.map((category) => (
+        {categoriesWithItems.map((category, index) => (
           <MenuCategory
             key={category.title}
             title={category.title}
             items={category.items}
+            isOpen={openCategoryIndex === index}
+            onToggle={() =>
+              setOpenCategoryIndex(openCategoryIndex === index ? null : index)
+            }
           />
         ))}
       </div>
