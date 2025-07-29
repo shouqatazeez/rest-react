@@ -1,7 +1,7 @@
 import { ChevronDown, ChevronUp, IndianRupeeIcon } from "lucide-react";
 import { Menu_Url } from "../utils/constants";
 
-const MenuCategory = ({ title, items, isOpen, onToggle }) => {
+const MenucardAccordian = ({ title, items, isOpen, onToggle }) => {
   const toggleAccordion = () => {
     onToggle();
   };
@@ -58,4 +58,4 @@ const MenuCategory = ({ title, items, isOpen, onToggle }) => {
   );
 };
 
-export default MenuCategory;
+export default MenucardAccordian;
