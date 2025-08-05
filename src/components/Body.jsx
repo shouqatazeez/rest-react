@@ -134,11 +134,7 @@ const Body = () => {
 
   const fetchData = async () => {
     try {
-      const proxyUrl = "https://corsproxy.io/?";
-      const swiggyUrl =
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.406498&lng=78.47724389999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
-
-      const data = await fetch(proxyUrl + encodeURIComponent(swiggyUrl));
+      const data = await fetch("/api/swiggy"); // <-- Call your own API
       const json = await data.json();
 
       const restaurantCard = json.data.cards.find(
@@ -224,7 +220,6 @@ const Body = () => {
         </button>
       </div>
 
-      {/* Restaurant Cards Grid */}
       <div className="grid gap-2 grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
         {reslist.map((restaurant) => (
           <Link
